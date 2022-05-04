@@ -11,7 +11,10 @@ class PostViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.whiteColor
         navigationItem.title = "Posts"
+
+        navigationController?.navigationBar.backgroundColor = UIColor.greenColor
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.whiteColor]
     }
 }

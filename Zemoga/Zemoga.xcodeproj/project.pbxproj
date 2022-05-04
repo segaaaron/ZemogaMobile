@@ -15,6 +15,7 @@
 		EE0FB93C28232B45009A08D9 /* ZemogaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0FB93B28232B45009A08D9 /* ZemogaUITests.swift */; };
 		EE0FB93E28232B45009A08D9 /* ZemogaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0FB93D28232B45009A08D9 /* ZemogaUITestsLaunchTests.swift */; };
 		EE0FB94C28233D5B009A08D9 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0FB94B28233D5B009A08D9 /* PostViewController.swift */; };
+		EE0FB95028233F75009A08D9 /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0FB94F28233F75009A08D9 /* Extension+UIColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		EE0FB93B28232B45009A08D9 /* ZemogaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZemogaUITests.swift; sourceTree = "<group>"; };
 		EE0FB93D28232B45009A08D9 /* ZemogaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZemogaUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		EE0FB94B28233D5B009A08D9 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		EE0FB94F28233F75009A08D9 /* Extension+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 		EE0FB91928232B3C009A08D9 /* Zemoga */ = {
 			isa = PBXGroup;
 			children = (
+				EE0FB94D28233F38009A08D9 /* Utils */,
 				EE0FB94A28233D37009A08D9 /* View */,
 				EE0FB91A28232B3C009A08D9 /* AppDelegate.swift */,
 				EE0FB91C28232B3C009A08D9 /* SceneDelegate.swift */,
@@ -127,9 +130,41 @@
 		EE0FB94A28233D37009A08D9 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				EE0FB94B28233D5B009A08D9 /* PostViewController.swift */,
+				EE0FB95228234360009A08D9 /* PostController */,
+				EE0FB95128234353009A08D9 /* DescriptionPost */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		EE0FB94D28233F38009A08D9 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				EE0FB94E28233F50009A08D9 /* Extensions */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		EE0FB94E28233F50009A08D9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EE0FB94F28233F75009A08D9 /* Extension+UIColor.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		EE0FB95128234353009A08D9 /* DescriptionPost */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DescriptionPost;
+			sourceTree = "<group>";
+		};
+		EE0FB95228234360009A08D9 /* PostController */ = {
+			isa = PBXGroup;
+			children = (
+				EE0FB94B28233D5B009A08D9 /* PostViewController.swift */,
+			);
+			path = PostController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,6 +300,7 @@
 				EE0FB94C28233D5B009A08D9 /* PostViewController.swift in Sources */,
 				EE0FB91B28232B3C009A08D9 /* AppDelegate.swift in Sources */,
 				EE0FB91D28232B3C009A08D9 /* SceneDelegate.swift in Sources */,
+				EE0FB95028233F75009A08D9 /* Extension+UIColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
