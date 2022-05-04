@@ -9,13 +9,12 @@
 /* Begin PBXBuildFile section */
 		EE0FB91B28232B3C009A08D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0FB91A28232B3C009A08D9 /* AppDelegate.swift */; };
 		EE0FB91D28232B3C009A08D9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0FB91C28232B3C009A08D9 /* SceneDelegate.swift */; };
-		EE0FB91F28232B3C009A08D9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0FB91E28232B3C009A08D9 /* ViewController.swift */; };
-		EE0FB92228232B3C009A08D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE0FB92028232B3C009A08D9 /* Main.storyboard */; };
 		EE0FB92428232B45009A08D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE0FB92328232B45009A08D9 /* Assets.xcassets */; };
 		EE0FB92728232B45009A08D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE0FB92528232B45009A08D9 /* LaunchScreen.storyboard */; };
 		EE0FB93228232B45009A08D9 /* ZemogaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0FB93128232B45009A08D9 /* ZemogaTests.swift */; };
 		EE0FB93C28232B45009A08D9 /* ZemogaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0FB93B28232B45009A08D9 /* ZemogaUITests.swift */; };
 		EE0FB93E28232B45009A08D9 /* ZemogaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0FB93D28232B45009A08D9 /* ZemogaUITestsLaunchTests.swift */; };
+		EE0FB94C28233D5B009A08D9 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0FB94B28233D5B009A08D9 /* PostViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +38,6 @@
 		EE0FB91728232B3C009A08D9 /* Zemoga.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zemoga.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE0FB91A28232B3C009A08D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE0FB91C28232B3C009A08D9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EE0FB91E28232B3C009A08D9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		EE0FB92128232B3C009A08D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EE0FB92328232B45009A08D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EE0FB92628232B45009A08D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EE0FB92828232B45009A08D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +46,7 @@
 		EE0FB93728232B45009A08D9 /* ZemogaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZemogaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE0FB93B28232B45009A08D9 /* ZemogaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZemogaUITests.swift; sourceTree = "<group>"; };
 		EE0FB93D28232B45009A08D9 /* ZemogaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZemogaUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		EE0FB94B28233D5B009A08D9 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +97,9 @@
 		EE0FB91928232B3C009A08D9 /* Zemoga */ = {
 			isa = PBXGroup;
 			children = (
+				EE0FB94A28233D37009A08D9 /* View */,
 				EE0FB91A28232B3C009A08D9 /* AppDelegate.swift */,
 				EE0FB91C28232B3C009A08D9 /* SceneDelegate.swift */,
-				EE0FB91E28232B3C009A08D9 /* ViewController.swift */,
-				EE0FB92028232B3C009A08D9 /* Main.storyboard */,
 				EE0FB92328232B45009A08D9 /* Assets.xcassets */,
 				EE0FB92528232B45009A08D9 /* LaunchScreen.storyboard */,
 				EE0FB92828232B45009A08D9 /* Info.plist */,
@@ -125,6 +122,14 @@
 				EE0FB93D28232B45009A08D9 /* ZemogaUITestsLaunchTests.swift */,
 			);
 			path = ZemogaUITests;
+			sourceTree = "<group>";
+		};
+		EE0FB94A28233D37009A08D9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EE0FB94B28233D5B009A08D9 /* PostViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,7 +238,6 @@
 			files = (
 				EE0FB92728232B45009A08D9 /* LaunchScreen.storyboard in Resources */,
 				EE0FB92428232B45009A08D9 /* Assets.xcassets in Resources */,
-				EE0FB92228232B3C009A08D9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,7 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE0FB91F28232B3C009A08D9 /* ViewController.swift in Sources */,
+				EE0FB94C28233D5B009A08D9 /* PostViewController.swift in Sources */,
 				EE0FB91B28232B3C009A08D9 /* AppDelegate.swift in Sources */,
 				EE0FB91D28232B3C009A08D9 /* SceneDelegate.swift in Sources */,
 			);
@@ -297,14 +301,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		EE0FB92028232B3C009A08D9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EE0FB92128232B3C009A08D9 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		EE0FB92528232B45009A08D9 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -443,7 +439,6 @@
 				INFOPLIST_FILE = Zemoga/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -470,7 +465,6 @@
 				INFOPLIST_FILE = Zemoga/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
