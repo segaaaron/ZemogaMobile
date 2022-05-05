@@ -22,6 +22,9 @@
 		EE0FB95B2823470D009A08D9 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0FB95A2823470D009A08D9 /* Service.swift */; };
 		EE0FB95D28234751009A08D9 /* RequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0FB95C28234751009A08D9 /* RequestService.swift */; };
 		EE0FB95F2823511F009A08D9 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0FB95E2823511F009A08D9 /* ServiceError.swift */; };
+		EE0FB962282360F7009A08D9 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0FB961282360F7009A08D9 /* PostModel.swift */; };
+		EE0FB965282362AF009A08D9 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0FB964282362AF009A08D9 /* PostCell.swift */; };
+		EE0FB96928236404009A08D9 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0FB96828236404009A08D9 /* PostViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +64,9 @@
 		EE0FB95A2823470D009A08D9 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		EE0FB95C28234751009A08D9 /* RequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestService.swift; sourceTree = "<group>"; };
 		EE0FB95E2823511F009A08D9 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
+		EE0FB961282360F7009A08D9 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
+		EE0FB964282362AF009A08D9 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		EE0FB96828236404009A08D9 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +119,9 @@
 			children = (
 				EE0FB95328234566009A08D9 /* Network */,
 				EE0FB94D28233F38009A08D9 /* Utils */,
+				EE0FB960282360E3009A08D9 /* Model */,
 				EE0FB94A28233D37009A08D9 /* View */,
+				EE0FB966282363D4009A08D9 /* ViewModel */,
 				EE0FB91A28232B3C009A08D9 /* AppDelegate.swift */,
 				EE0FB91C28232B3C009A08D9 /* SceneDelegate.swift */,
 				EE0FB92328232B45009A08D9 /* Assets.xcassets */,
@@ -145,7 +153,6 @@
 			isa = PBXGroup;
 			children = (
 				EE0FB95228234360009A08D9 /* PostController */,
-				EE0FB95128234353009A08D9 /* DescriptionPost */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -166,16 +173,10 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		EE0FB95128234353009A08D9 /* DescriptionPost */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DescriptionPost;
-			sourceTree = "<group>";
-		};
 		EE0FB95228234360009A08D9 /* PostController */ = {
 			isa = PBXGroup;
 			children = (
+				EE0FB96328236280009A08D9 /* Cell */,
 				EE0FB94B28233D5B009A08D9 /* PostViewController.swift */,
 			);
 			path = PostController;
@@ -191,6 +192,38 @@
 				EE0FB95E2823511F009A08D9 /* ServiceError.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		EE0FB960282360E3009A08D9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EE0FB961282360F7009A08D9 /* PostModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EE0FB96328236280009A08D9 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				EE0FB964282362AF009A08D9 /* PostCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		EE0FB966282363D4009A08D9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EE0FB967282363F3009A08D9 /* PostViewModel */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		EE0FB967282363F3009A08D9 /* PostViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EE0FB96828236404009A08D9 /* PostViewModel.swift */,
+			);
+			path = PostViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,13 +357,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE0FB96928236404009A08D9 /* PostViewModel.swift in Sources */,
 				EE0FB94C28233D5B009A08D9 /* PostViewController.swift in Sources */,
+				EE0FB962282360F7009A08D9 /* PostModel.swift in Sources */,
 				EE0FB95D28234751009A08D9 /* RequestService.swift in Sources */,
 				EE0FB95B2823470D009A08D9 /* Service.swift in Sources */,
 				EE0FB955282345AF009A08D9 /* EndPoints.swift in Sources */,
 				EE0FB959282346C0009A08D9 /* ServicePath.swift in Sources */,
 				EE0FB91B28232B3C009A08D9 /* AppDelegate.swift in Sources */,
 				EE0FB95F2823511F009A08D9 /* ServiceError.swift in Sources */,
+				EE0FB965282362AF009A08D9 /* PostCell.swift in Sources */,
 				EE0FB91D28232B3C009A08D9 /* SceneDelegate.swift in Sources */,
 				EE0FB95028233F75009A08D9 /* Extension+UIColor.swift in Sources */,
 			);
@@ -509,6 +545,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -535,6 +572,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
