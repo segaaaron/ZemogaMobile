@@ -233,8 +233,8 @@ private extension DetailViewController {
             commentsLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ZenogaConfig.spacelevel3),
             
             tableView.topAnchor.constraint(equalTo: commentsLabel.bottomAnchor, constant: ZenogaConfig.spacelevel2),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ZenogaConfig.spacelevel2),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ZenogaConfig.spacelevel2),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ZenogaConfig.spacelevel4),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ZenogaConfig.spacelevel4),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -ZenogaConfig.spacelevel2),
         ])
     }

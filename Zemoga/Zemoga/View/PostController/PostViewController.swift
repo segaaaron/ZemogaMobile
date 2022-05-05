@@ -11,6 +11,7 @@ class PostViewController: UIViewController {
 
     private var viewModel: PostViewModel
     private var postList: [PostModel] = []
+    private var auxList: [PostModel] = []
     private var userList: [UserModel] = []
     private var commentList: [CommentsModel] = []
     private var group = DispatchGroup()
@@ -19,6 +20,19 @@ class PostViewController: UIViewController {
         let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
        return table
+    }()
+    
+    lazy private var segment: UISegmentedControl = {
+        let segment = UISegmentedControl(items: [ZenogaConfig.segmentOne, ZenogaConfig.segmentTwo])
+        let normaltitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.whiteColor]
+        let selectedtitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.greenColor]
+        segment.setTitleTextAttributes(normaltitleTextAttributes, for: .normal)
+        segment.setTitleTextAttributes(selectedtitleTextAttributes, for: .selected)
+        segment.selectedSegmentIndex = 0
+        segment.backgroundColor = UIColor.greenColor
+        segment.addTarget(self, action: #selector(handleSegementChange(_:)), for: .valueChanged)
+        segment.translatesAutoresizingMaskIntoConstraints = false
+        return segment
     }()
     
     init(viewModel: PostViewModel) {
@@ -41,8 +55,11 @@ class PostViewController: UIViewController {
             self?.tableView.reloadData()
         }
     }
+}
+
+private extension PostViewController {
     
-    private func configNavigation() {
+    func configNavigation() {
         view.backgroundColor = UIColor.whiteColor
         navigationItem.title = ZenogaConfig.postTitle
 
@@ -54,7 +71,7 @@ class PostViewController: UIViewController {
         navigationItem.backBarButtonItem = backItem
     }
     
-    private func setupTableView() {
+    func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -63,18 +80,38 @@ class PostViewController: UIViewController {
         tableView.register(PostCell.self, forCellReuseIdentifier: PostCell.reuseidentifier)
     }
     
-    private func setupConstrains() {
-        view.addSubview(tableView)
+    func setupConstrains() {
+        [segment, tableView].forEach{ view.addSubview($0) }
         
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            segment.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: ZenogaConfig.spacelevel2),
+            segment.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ZenogaConfig.spacelevel3),
+            segment.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ZenogaConfig.spacelevel3),
+            
+            tableView.topAnchor.constraint(equalTo: segment.bottomAnchor, constant: ZenogaConfig.spacelevel4),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
     
-    private func loadPost() {
+    func loadUsers() {
+        group.enter()
+        viewModel.serviceCallback(with: .GET, model: [UserModel].self, endPoint: .users) { [weak self] result in
+            switch result {
+            case .success(let resp):
+                self?.userList = resp
+                self?.group.leave()
+            case .failure(let error):
+                print(error.localizedDescription)
+                self?.group.leave()
+            case .none:
+                break
+            }
+        }
+    }
+    
+    func loadPost() {
         group.enter()
         viewModel.serviceCallback(with: .GET, model: [PostModel].self, endPoint: .posts) { [weak self] result in
             switch result {
@@ -90,19 +127,18 @@ class PostViewController: UIViewController {
         }
     }
     
-    private func loadUsers() {
-        group.enter()
-        viewModel.serviceCallback(with: .GET, model: [UserModel].self, endPoint: .users) { [weak self] result in
-            switch result {
-            case .success(let resp):
-                self?.userList = resp
-                self?.group.leave()
-            case .failure(let error):
-                print(error.localizedDescription)
-                self?.group.leave()
-            case .none:
-                break
-            }
+    @objc func handleSegementChange(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            print("entro al 0")
+            postList = auxList
+            tableView.reloadData()
+        case 1:
+            auxList = postList
+            postList = []
+            tableView.reloadData()
+        default:
+            break
         }
     }
 }

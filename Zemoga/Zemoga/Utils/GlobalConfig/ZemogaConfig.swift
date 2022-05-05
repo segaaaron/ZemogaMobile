@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 public class ZenogaConfig {
+    // MARK: space
     static let spacelevel1: CGFloat = 5
     static let spacelevel2: CGFloat = 10
     static let spacelevel3: CGFloat = 15
@@ -23,11 +24,17 @@ public class ZenogaConfig {
     static let userTitle = "User"
     static let commentsTitle = "Comments"
     
+    // MARK: detail user label
     static let nameUser = "Name"
     static let emailUser = "Email"
     static let phoneUser = "Phone"
     static let websiteUser = "Website"
     
+    // MARK: Controller title
     static let DetailTitle = "Description"
     static let postTitle = "Posts"
+    
+    // MARK: SEGMENT
+    static let segmentOne = "All"
+    static let segmentTwo = "Favorites"
 }
