@@ -11,6 +11,9 @@ class PostViewController: UIViewController {
 
     private var viewModel: PostViewModel
     private var postList: [PostModel] = []
+    private var userList: [UserModel] = []
+    private var commentList: [CommentsModel] = []
+    private var group = DispatchGroup()
     
     lazy private var tableView: UITableView = {
         let table = UITableView()
@@ -33,14 +36,22 @@ class PostViewController: UIViewController {
         setupTableView()
         setupConstrains()
         loadPost()
+        loadUsers()
+        group.notify(queue: .main) { [weak self] in
+            self?.tableView.reloadData()
+        }
     }
     
     private func configNavigation() {
         view.backgroundColor = UIColor.whiteColor
-        navigationItem.title = "Posts"
+        navigationItem.title = ZenogaConfig.postTitle
 
         navigationController?.navigationBar.backgroundColor = UIColor.greenColor
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.whiteColor]
+        
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
+        navigationItem.backBarButtonItem = backItem
     }
     
     private func setupTableView() {
@@ -64,15 +75,31 @@ class PostViewController: UIViewController {
     }
     
     private func loadPost() {
-        viewModel.servicePost { [weak self] result in
+        group.enter()
+        viewModel.serviceCallback(with: .GET, model: [PostModel].self, endPoint: .posts) { [weak self] result in
             switch result {
             case .success(let resp):
                 self?.postList = resp
-                DispatchQueue.main.async {
-                    self?.tableView.reloadData()
-                }
+                self?.group.leave()
             case .failure(let error):
                 print(error.localizedDescription)
+                self?.group.leave()
+            case .none:
+                break
+            }
+        }
+    }
+    
+    private func loadUsers() {
+        group.enter()
+        viewModel.serviceCallback(with: .GET, model: [UserModel].self, endPoint: .users) { [weak self] result in
+            switch result {
+            case .success(let resp):
+                self?.userList = resp
+                self?.group.leave()
+            case .failure(let error):
+                print(error.localizedDescription)
+                self?.group.leave()
             case .none:
                 break
             }
@@ -90,11 +117,16 @@ extension PostViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         let model = postList[indexPath.row]
+        cell.accessoryType = .disclosureIndicator
         cell.config(model: model)
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return view.frame.height * 0.15
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let post  = postList[indexPath.row]
+        if let user = userList.filter({ $0.id == post.userID }).first {
+            let detailVC = DetailViewController(user: user, post: post, viewModel: viewModel)
+            navigationController?.pushViewController(detailVC, animated: true)
+        }
+    }
 }

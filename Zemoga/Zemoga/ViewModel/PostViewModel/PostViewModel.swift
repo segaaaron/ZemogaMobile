@@ -10,16 +10,12 @@ import Foundation
 
 final class PostViewModel {
     
-    func servicePost(completion: @escaping (Result<[PostModel], Error>?) -> Void) {
-        Service.apiService(with: .GET, model: [PostModel].self, endPoint: .posts, params: [:]) { result in
-            switch result {
-            case .success(let result):
-                completion(.success(result))
-            case .failure(let error):
-                completion(.failure(error))
-            case .none:
-                break
-            }
-        }
+    func serviceCallback<T: Decodable>(with
+                                       method: HTTPMethod,
+                                       model: T.Type,
+                                       endPoint: EndPoints,
+                                       params: [String: String] = [:],
+                                       completion: @escaping (Result<T, Error>?) -> Void) {
+        Service.apiService(with: method, model: model, endPoint: endPoint, params: params, completion: completion)
     }
 }
