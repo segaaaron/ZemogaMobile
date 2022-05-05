@@ -4,3 +4,4 @@ Zemoga/Podfile.lock
 Zemoga/Zemoga.xcworkspace/
 Zemoga/Pods/
 Zemoga/Podfile.lock
+*.xcuserdata
