@@ -16,6 +16,12 @@
 		EE0FB93E28232B45009A08D9 /* ZemogaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0FB93D28232B45009A08D9 /* ZemogaUITestsLaunchTests.swift */; };
 		EE0FB94C28233D5B009A08D9 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0FB94B28233D5B009A08D9 /* PostViewController.swift */; };
 		EE0FB95028233F75009A08D9 /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0FB94F28233F75009A08D9 /* Extension+UIColor.swift */; };
+		EE0FB955282345AF009A08D9 /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0FB954282345AF009A08D9 /* EndPoints.swift */; };
+		EE0FB95728234676009A08D9 /* ServiceUrl.plist in Resources */ = {isa = PBXBuildFile; fileRef = EE0FB95628234676009A08D9 /* ServiceUrl.plist */; };
+		EE0FB959282346C0009A08D9 /* ServicePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0FB958282346C0009A08D9 /* ServicePath.swift */; };
+		EE0FB95B2823470D009A08D9 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0FB95A2823470D009A08D9 /* Service.swift */; };
+		EE0FB95D28234751009A08D9 /* RequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0FB95C28234751009A08D9 /* RequestService.swift */; };
+		EE0FB95F2823511F009A08D9 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0FB95E2823511F009A08D9 /* ServiceError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +55,12 @@
 		EE0FB93D28232B45009A08D9 /* ZemogaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZemogaUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		EE0FB94B28233D5B009A08D9 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		EE0FB94F28233F75009A08D9 /* Extension+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
+		EE0FB954282345AF009A08D9 /* EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
+		EE0FB95628234676009A08D9 /* ServiceUrl.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ServiceUrl.plist; sourceTree = "<group>"; };
+		EE0FB958282346C0009A08D9 /* ServicePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicePath.swift; sourceTree = "<group>"; };
+		EE0FB95A2823470D009A08D9 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		EE0FB95C28234751009A08D9 /* RequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestService.swift; sourceTree = "<group>"; };
+		EE0FB95E2823511F009A08D9 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +111,7 @@
 		EE0FB91928232B3C009A08D9 /* Zemoga */ = {
 			isa = PBXGroup;
 			children = (
+				EE0FB95328234566009A08D9 /* Network */,
 				EE0FB94D28233F38009A08D9 /* Utils */,
 				EE0FB94A28233D37009A08D9 /* View */,
 				EE0FB91A28232B3C009A08D9 /* AppDelegate.swift */,
@@ -106,6 +119,7 @@
 				EE0FB92328232B45009A08D9 /* Assets.xcassets */,
 				EE0FB92528232B45009A08D9 /* LaunchScreen.storyboard */,
 				EE0FB92828232B45009A08D9 /* Info.plist */,
+				EE0FB95628234676009A08D9 /* ServiceUrl.plist */,
 			);
 			path = Zemoga;
 			sourceTree = "<group>";
@@ -165,6 +179,18 @@
 				EE0FB94B28233D5B009A08D9 /* PostViewController.swift */,
 			);
 			path = PostController;
+			sourceTree = "<group>";
+		};
+		EE0FB95328234566009A08D9 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				EE0FB954282345AF009A08D9 /* EndPoints.swift */,
+				EE0FB958282346C0009A08D9 /* ServicePath.swift */,
+				EE0FB95A2823470D009A08D9 /* Service.swift */,
+				EE0FB95C28234751009A08D9 /* RequestService.swift */,
+				EE0FB95E2823511F009A08D9 /* ServiceError.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,6 +299,7 @@
 			files = (
 				EE0FB92728232B45009A08D9 /* LaunchScreen.storyboard in Resources */,
 				EE0FB92428232B45009A08D9 /* Assets.xcassets in Resources */,
+				EE0FB95728234676009A08D9 /* ServiceUrl.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,7 +325,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE0FB94C28233D5B009A08D9 /* PostViewController.swift in Sources */,
+				EE0FB95D28234751009A08D9 /* RequestService.swift in Sources */,
+				EE0FB95B2823470D009A08D9 /* Service.swift in Sources */,
+				EE0FB955282345AF009A08D9 /* EndPoints.swift in Sources */,
+				EE0FB959282346C0009A08D9 /* ServicePath.swift in Sources */,
 				EE0FB91B28232B3C009A08D9 /* AppDelegate.swift in Sources */,
+				EE0FB95F2823511F009A08D9 /* ServiceError.swift in Sources */,
 				EE0FB91D28232B3C009A08D9 /* SceneDelegate.swift in Sources */,
 				EE0FB95028233F75009A08D9 /* Extension+UIColor.swift in Sources */,
 			);
