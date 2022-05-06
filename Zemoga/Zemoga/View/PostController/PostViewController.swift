@@ -130,7 +130,6 @@ private extension PostViewController {
     @objc func handleSegementChange(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            print("entro al 0")
             postList = auxList
             tableView.reloadData()
         case 1:
