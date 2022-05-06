@@ -35,6 +35,15 @@ class PostViewController: UIViewController {
         return segment
     }()
     
+    lazy private var deleteButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = UIColor.red
+        button.setTitle(ZenogaConfig.buttonDelete, for: .normal)
+        button.addTarget(self, action: #selector(handleDeleteButton(_:)), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+       return button
+    }()
+    
     init(viewModel: PostViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -69,6 +78,10 @@ private extension PostViewController {
         let backItem = UIBarButtonItem()
         backItem.title = ""
         navigationItem.backBarButtonItem = backItem
+        
+        let image = UIImage(named: "reload_icon")
+        let refreshButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(handleRefreshButton))
+        navigationItem.rightBarButtonItem = refreshButton
     }
     
     func setupTableView() {
@@ -81,7 +94,7 @@ private extension PostViewController {
     }
     
     func setupConstrains() {
-        [segment, tableView].forEach{ view.addSubview($0) }
+        [segment, deleteButton, tableView].forEach{ view.addSubview($0) }
         
         NSLayoutConstraint.activate([
             segment.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: ZenogaConfig.spacelevel2),
@@ -91,8 +104,14 @@ private extension PostViewController {
             tableView.topAnchor.constraint(equalTo: segment.bottomAnchor, constant: ZenogaConfig.spacelevel4),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            
+            deleteButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: ZenogaConfig.spacelevel4),
+            deleteButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ZenogaConfig.spacelevel4),
+            deleteButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ZenogaConfig.spacelevel4),
+            deleteButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -ZenogaConfig.spacelevel7),
         ])
+        deleteButton.layoutIfNeeded()
+        deleteButton.layer.cornerRadius = deleteButton.frame.height/2
     }
     
     func loadUsers() {
@@ -139,6 +158,23 @@ private extension PostViewController {
         default:
             break
         }
+    }
+    
+    @objc func handleRefreshButton(_ sender: UIButton) {
+        if postList.count > 0 {
+            showAlertView(message: "This list is not empty")
+        } else {
+            loadUsers()
+            loadPost()
+            group.notify(queue: .main) { [weak self] in
+                self?.tableView.reloadData()
+            }
+        }
+    }
+    
+    @objc func handleDeleteButton(_ sender: UIButton) {
+        postList = []
+        tableView.reloadData()
     }
 }
 

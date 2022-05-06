@@ -33,6 +33,8 @@
 		EE3186B2282439170048ECDB /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3186B1282439170048ECDB /* DetailViewController.swift */; };
 		EE3186B528243E690048ECDB /* CommentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3186B428243E690048ECDB /* CommentsCell.swift */; };
 		EE3186B8282453D40048ECDB /* ZemogaConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3186B7282453D40048ECDB /* ZemogaConfig.swift */; };
+		EECB29F32824D26600338A5B /* FavoritesObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECB29F22824D26600338A5B /* FavoritesObject.swift */; };
+		EECB29F72824DBBA00338A5B /* Extension+Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECB29F62824DBBA00338A5B /* Extension+Controller.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +89,8 @@
 		EE3186B1282439170048ECDB /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		EE3186B428243E690048ECDB /* CommentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsCell.swift; sourceTree = "<group>"; };
 		EE3186B7282453D40048ECDB /* ZemogaConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZemogaConfig.swift; sourceTree = "<group>"; };
+		EECB29F22824D26600338A5B /* FavoritesObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesObject.swift; sourceTree = "<group>"; };
+		EECB29F62824DBBA00338A5B /* Extension+Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Controller.swift"; sourceTree = "<group>"; };
 		EF8CBA1A14DCE491587ED468 /* Pods-Zemoga.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zemoga.release.xcconfig"; path = "Target Support Files/Pods-Zemoga/Pods-Zemoga.release.xcconfig"; sourceTree = "<group>"; };
 		FBB0E2F14D9DA827179369EF /* Pods_Zemoga_ZemogaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zemoga_ZemogaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -129,7 +133,6 @@
 				40071AA1502A4C146D9FDA1E /* Pods-ZemogaTests.debug.xcconfig */,
 				30650559E734DFD5D40F352A /* Pods-ZemogaTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -222,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				EE0FB94F28233F75009A08D9 /* Extension+UIColor.swift */,
+				EECB29F62824DBBA00338A5B /* Extension+Controller.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -253,6 +257,7 @@
 				EE0FB961282360F7009A08D9 /* PostModel.swift */,
 				EE3186AC282425620048ECDB /* UserModel.swift */,
 				EE3186AE282425710048ECDB /* CommentsModel.swift */,
+				EECB29F22824D26600338A5B /* FavoritesObject.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -545,6 +550,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EECB29F32824D26600338A5B /* FavoritesObject.swift in Sources */,
 				EE0FB96928236404009A08D9 /* PostViewModel.swift in Sources */,
 				EE0FB94C28233D5B009A08D9 /* PostViewController.swift in Sources */,
 				EE0FB962282360F7009A08D9 /* PostModel.swift in Sources */,
@@ -557,6 +563,7 @@
 				EE0FB955282345AF009A08D9 /* EndPoints.swift in Sources */,
 				EE0FB959282346C0009A08D9 /* ServicePath.swift in Sources */,
 				EE0FB91B28232B3C009A08D9 /* AppDelegate.swift in Sources */,
+				EECB29F72824DBBA00338A5B /* Extension+Controller.swift in Sources */,
 				EE0FB95F2823511F009A08D9 /* ServiceError.swift in Sources */,
 				EE0FB965282362AF009A08D9 /* PostCell.swift in Sources */,
 				EE3186B2282439170048ECDB /* DetailViewController.swift in Sources */,

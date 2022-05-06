@@ -37,4 +37,7 @@ public class ZenogaConfig {
     // MARK: SEGMENT
     static let segmentOne = "All"
     static let segmentTwo = "Favorites"
+    
+    // MARK: Button
+    static let buttonDelete = "Delete All"
 }

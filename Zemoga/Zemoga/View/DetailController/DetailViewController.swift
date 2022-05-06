@@ -13,6 +13,11 @@ class DetailViewController: UIViewController {
     private var post: PostModel
     private var viewModel: PostViewModel
     private var commentsList: [CommentsModel] = []
+    private var isStarOn = false {
+        didSet {
+            configNavigation()
+        }
+    }
     
     lazy private var tableView: UITableView = {
         let table = UITableView()
@@ -169,6 +174,15 @@ private extension DetailViewController {
 
         navigationController?.navigationBar.backgroundColor = UIColor.greenColor
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.whiteColor]
+        
+        let starOn = UIImage(named: "star_on")?.withRenderingMode(.alwaysTemplate)
+        
+        let starOff = UIImage(named: "star_off")
+        
+        let image = isStarOn ? starOn : starOff
+        let starButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(handleAddfavorites))
+        starButton.tintColor = isStarOn ? UIColor.yellow : UIColor.whiteColor
+        navigationItem.rightBarButtonItem = starButton
     }
     
     func setupTableView() {
@@ -262,6 +276,10 @@ private extension DetailViewController {
         textEmailLabel.text = user.email
         textPhoneLabel.text = user.phone
         textWebsiteLabel.text = user.website
+    }
+    
+    @objc func handleAddfavorites(_ sender: UIButton) {
+        isStarOn = !isStarOn
     }
 }
 
