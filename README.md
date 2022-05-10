@@ -1,2 +1,8 @@
 # ZemogaMobile
-It is an app to show the user's post and use CRUD
+
+# POD installed REALM
+
+# How to run
+- Download or clone the project
+- pod install
+
