@@ -17,6 +17,7 @@ enum EndPoints {
     case posts
     case users
     case comments(id: Int)
+    case testpost
     
     var endpoint: String {
         switch self {
@@ -26,6 +27,8 @@ enum EndPoints {
             return "/users"
         case .comments(let id):
             return "/posts/\(id)/comments"
+        case .testpost:
+            return "/test"
         }
     }
 }
