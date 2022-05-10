@@ -15,11 +15,17 @@ enum HTTPMethod: String {
 
 enum EndPoints {
     case posts
+    case users
+    case comments(id: Int)
     
     var endpoint: String {
         switch self {
         case .posts:
             return "/posts"
+        case .users:
+            return "/users"
+        case .comments(let id):
+            return "/posts/\(id)/comments"
         }
     }
 }

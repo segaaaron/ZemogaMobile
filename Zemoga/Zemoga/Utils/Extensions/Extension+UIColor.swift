@@ -17,6 +17,10 @@ extension UIColor {
     static var whiteColor: UIColor {
         return .getWhiteColor()
     }
+    
+    static var LightGrayColor: UIColor {
+        return .getLightGrayColor()
+    }
 
     //MARK: Custom with Hex Color
     static func hexColor(hex: String, alpha: CGFloat = 1.0) -> UIColor {
@@ -44,5 +48,9 @@ extension UIColor {
     
     private static func getWhiteColor() -> UIColor {
         return .hexColor(hex: "#FFFFFF")
+    }
+    
+    private static func getLightGrayColor() -> UIColor {
+        return .hexColor(hex: "#DBDADA")
     }
 }
