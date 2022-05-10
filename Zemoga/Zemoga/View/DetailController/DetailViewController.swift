@@ -186,7 +186,7 @@ private extension DetailViewController {
         
         let image = isStarOn ? starOn : starOff
         let starButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(handleAddfavorites))
-        starButton.tintColor = isStarOn ? UIColor.yellow : UIColor.whiteColor
+        starButton.tintColor = isStarOn ? UIColor.MediumYellowColor : UIColor.whiteColor
         navigationItem.rightBarButtonItem = starButton
     }
     

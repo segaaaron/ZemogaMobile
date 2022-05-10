@@ -68,6 +68,10 @@ class PostViewController: UIViewController {
             self?.tableView.reloadData()
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool){
+        tableView.reloadData()
+    }
 }
 
 private extension PostViewController {
