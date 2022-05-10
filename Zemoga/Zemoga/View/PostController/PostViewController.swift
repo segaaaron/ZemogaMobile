@@ -11,7 +11,7 @@ import RealmSwift
 class PostViewController: UIViewController {
 
     private var viewModel: PostViewModel
-    private var postList: [PostModel] = []
+    var postList: [PostModel] = []
     private var auxList: [PostModel] = []
     private var userList: [UserModel] = []
     private var commentList: [CommentsModel] = []
@@ -20,7 +20,7 @@ class PostViewController: UIViewController {
     private var favoriteList: Results<FavoritesObject>?
     private var group = DispatchGroup()
     
-    lazy private var tableView: UITableView = {
+    lazy var tableView: UITableView = {
         let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
        return table
