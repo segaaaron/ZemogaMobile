@@ -33,6 +33,7 @@
 		EE3186B2282439170048ECDB /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3186B1282439170048ECDB /* DetailViewController.swift */; };
 		EE3186B528243E690048ECDB /* CommentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3186B428243E690048ECDB /* CommentsCell.swift */; };
 		EE3186B8282453D40048ECDB /* ZemogaConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3186B7282453D40048ECDB /* ZemogaConfig.swift */; };
+		EE9AABE02829A67300668296 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9AABDF2829A67300668296 /* RealmService.swift */; };
 		EECB29F32824D26600338A5B /* FavoritesObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECB29F22824D26600338A5B /* FavoritesObject.swift */; };
 		EECB29F72824DBBA00338A5B /* Extension+Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECB29F62824DBBA00338A5B /* Extension+Controller.swift */; };
 /* End PBXBuildFile section */
@@ -89,6 +90,7 @@
 		EE3186B1282439170048ECDB /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		EE3186B428243E690048ECDB /* CommentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsCell.swift; sourceTree = "<group>"; };
 		EE3186B7282453D40048ECDB /* ZemogaConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZemogaConfig.swift; sourceTree = "<group>"; };
+		EE9AABDF2829A67300668296 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		EECB29F22824D26600338A5B /* FavoritesObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesObject.swift; sourceTree = "<group>"; };
 		EECB29F62824DBBA00338A5B /* Extension+Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Controller.swift"; sourceTree = "<group>"; };
 		EF8CBA1A14DCE491587ED468 /* Pods-Zemoga.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zemoga.release.xcconfig"; path = "Target Support Files/Pods-Zemoga/Pods-Zemoga.release.xcconfig"; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				EE0FB95A2823470D009A08D9 /* Service.swift */,
 				EE0FB95C28234751009A08D9 /* RequestService.swift */,
 				EE0FB95E2823511F009A08D9 /* ServiceError.swift */,
+				EE9AABDF2829A67300668296 /* RealmService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -569,6 +572,7 @@
 				EE3186B2282439170048ECDB /* DetailViewController.swift in Sources */,
 				EE0FB91D28232B3C009A08D9 /* SceneDelegate.swift in Sources */,
 				EE0FB95028233F75009A08D9 /* Extension+UIColor.swift in Sources */,
+				EE9AABE02829A67300668296 /* RealmService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

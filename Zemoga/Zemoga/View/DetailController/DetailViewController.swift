@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class DetailViewController: UIViewController {
     
@@ -13,6 +14,8 @@ class DetailViewController: UIViewController {
     private var post: PostModel
     private var viewModel: PostViewModel
     private var commentsList: [CommentsModel] = []
+    private var realm = RealmService.shared.realm
+    private var favoritesList: Results<FavoritesObject>?
     private var isStarOn = false {
         didSet {
             configNavigation()
@@ -164,6 +167,13 @@ class DetailViewController: UIViewController {
         setupDescription()
         loadCommentsList()
         loadDescription()
+        favoritesList = realm.objects(FavoritesObject.self)
+        isStarOn = validateStatus()
+//        print("path ==>", Realm.Configuration.defaultConfiguration.fileURL)
+//        let realm = try! Realm()
+//        try! realm.write {
+//          realm.deleteAll()
+//        }
     }
 }
 
@@ -190,6 +200,7 @@ private extension DetailViewController {
         tableView.delegate = self
         
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.showsVerticalScrollIndicator = false
         
         tableView.register(CommentsCell.self, forCellReuseIdentifier: CommentsCell.reuseidentifier)
     }
@@ -280,6 +291,67 @@ private extension DetailViewController {
     
     @objc func handleAddfavorites(_ sender: UIButton) {
         isStarOn = !isStarOn
+        saveData(status: isStarOn)
+    }
+    
+    func saveData(status: Bool) {
+        if status {
+            let userObj = UserObject()
+            userObj.id = user.id
+            userObj.name = user.name
+            userObj.username = user.username
+            userObj.email = user.email
+            userObj.phone = user.phone
+            userObj.website = user.website
+            let postObj = PostObject()
+            postObj.userId = post.userID
+            postObj.id = post.id
+            postObj.title = post.title
+            postObj.body = post.body
+
+            let commentListObj = List<CommentsObject>()
+            commentsList.forEach { obj in
+                let commentObj = CommentsObject()
+                commentObj.postId = obj.postID
+                commentObj.id = obj.id
+                commentObj.name = obj.name
+                commentObj.email = obj.email
+                commentObj.body = obj.body
+                commentListObj.append(commentObj)
+            }
+
+            let favoritesObjc = FavoritesObject()
+            favoritesObjc.userObj = userObj
+            favoritesObjc.postObjt = postObj
+            favoritesObjc.commentList = commentListObj
+            let favorites = List<FavoritesObject>()
+
+            favorites.append(favoritesObjc)
+
+            RealmService.shared.createArray(favorites)
+        } else {
+            if let index = favoritesList?.firstIndex(where: { $0.postObjt?.id == post.id && $0.postObjt?.userId == post.userID }), let list = favoritesList {
+                let userObj = list[index].userObj ?? UserObject()
+                let postObj = list[index].postObjt ?? PostObject()
+                let commentObjList = list[index].commentList
+                
+                commentObjList.forEach { item in
+                    RealmService.shared.delete(item)
+                }
+                
+                RealmService.shared.delete(list, index: index)
+                RealmService.shared.delete(userObj)
+                RealmService.shared.delete(postObj)
+            }
+        }
+    }
+    
+    func validateStatus() -> Bool {
+        var resp: Bool = false
+        if let _ = favoritesList?.firstIndex(where: { $0.postObjt?.id == post.id && $0.postObjt?.userId == post.userID }), let _ = favoritesList {
+            resp = true
+        }
+        return resp
     }
 }
 

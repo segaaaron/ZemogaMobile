@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class PostViewController: UIViewController {
 
@@ -14,6 +15,9 @@ class PostViewController: UIViewController {
     private var auxList: [PostModel] = []
     private var userList: [UserModel] = []
     private var commentList: [CommentsModel] = []
+    private var realm = RealmService.shared.realm
+    private var loadFavoriteList: Bool = false
+    private var favoriteList: Results<FavoritesObject>?
     private var group = DispatchGroup()
     
     lazy private var tableView: UITableView = {
@@ -89,6 +93,7 @@ private extension PostViewController {
         tableView.delegate = self
         
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.showsVerticalScrollIndicator = false
         
         tableView.register(PostCell.self, forCellReuseIdentifier: PostCell.reuseidentifier)
     }
@@ -150,10 +155,12 @@ private extension PostViewController {
         switch sender.selectedSegmentIndex {
         case 0:
             postList = auxList
+            loadFavoriteList = false
             tableView.reloadData()
         case 1:
             auxList = postList
-            postList = []
+            favoriteList = realm.objects(FavoritesObject.self)
+            loadFavoriteList = true
             tableView.reloadData()
         default:
             break
@@ -162,7 +169,7 @@ private extension PostViewController {
     
     @objc func handleRefreshButton(_ sender: UIButton) {
         if postList.count > 0 {
-            showAlertView(message: "This list is not empty")
+            showAlertView(message: "The post is not empty")
         } else {
             loadUsers()
             loadPost()
@@ -180,24 +187,43 @@ private extension PostViewController {
 
 extension PostViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return postList.count
+        return loadFavoriteList ? (favoriteList?.count ?? 0) : postList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: PostCell.reuseidentifier, for: indexPath) as? PostCell else {
             return UITableViewCell()
         }
-        let model = postList[indexPath.row]
-        cell.accessoryType = .disclosureIndicator
-        cell.config(model: model)
-        return cell
+        
+        if let list = favoriteList, loadFavoriteList {
+            let postObj = list[indexPath.row].postObjt ?? PostObject()
+            cell.accessoryType = .disclosureIndicator
+            let model = PostModel(userID: postObj.userId, id: postObj.id, title: postObj.title, body: postObj.title)
+            
+            cell.config(model: model)
+            return cell
+        } else {
+            let model = postList[indexPath.row]
+            cell.accessoryType = .disclosureIndicator
+            cell.config(model: model)
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let post  = postList[indexPath.row]
-        if let user = userList.filter({ $0.id == post.userID }).first {
-            let detailVC = DetailViewController(user: user, post: post, viewModel: viewModel)
-            navigationController?.pushViewController(detailVC, animated: true)
+        if let list = favoriteList, loadFavoriteList {
+            let postObj = list[indexPath.row].postObjt ?? PostObject()
+            let postModel = PostModel(userID: postObj.userId, id: postObj.id, title: postObj.title, body: postObj.body)
+            if let user = userList.filter({ $0.id == postObj.userId }).first {
+                let detailVC = DetailViewController(user: user, post: postModel, viewModel: viewModel)
+                navigationController?.pushViewController(detailVC, animated: true)
+            }
+        } else {
+            let post  = postList[indexPath.row]
+            if let user = userList.filter({ $0.id == post.userID }).first {
+                let detailVC = DetailViewController(user: user, post: post, viewModel: viewModel)
+                navigationController?.pushViewController(detailVC, animated: true)
+            }
         }
     }
 }
