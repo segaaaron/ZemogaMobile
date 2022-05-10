@@ -169,11 +169,6 @@ class DetailViewController: UIViewController {
         loadDescription()
         favoritesList = realm.objects(FavoritesObject.self)
         isStarOn = validateStatus()
-//        print("path ==>", Realm.Configuration.defaultConfiguration.fileURL)
-//        let realm = try! Realm()
-//        try! realm.write {
-//          realm.deleteAll()
-//        }
     }
 }
 
